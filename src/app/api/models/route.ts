@@ -147,6 +147,15 @@ const KIE_MODELS: ProviderModel[] = [
     pageUrl: "https://kie.ai/flux-2",
   },
   {
+    id: "nano-banana-2",
+    name: "Nano Banana 2",
+    description: "Google Gemini 3.1 Flash image generation via Kie.ai. Supports text-to-image and image-to-image with up to 14 input images, resolution control (1K/2K/4K), and aspect ratio selection.",
+    provider: "kie",
+    capabilities: ["text-to-image", "image-to-image"],
+    coverImage: undefined,
+    pageUrl: "https://docs.kie.ai/market/google/nanobanana2",
+  },
+  {
     id: "nano-banana-pro",
     name: "Nano Banana Pro",
     description: "Google Gemini 3 Pro image generation via Kie.ai. Supports text-to-image and image-to-image with up to 8 input images.",

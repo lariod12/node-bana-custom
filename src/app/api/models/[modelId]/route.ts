@@ -737,6 +737,17 @@ function getKieSchema(modelId: string): ExtractedSchema {
         { name: "input_urls", type: "image", required: true, label: "Image", isArray: true },
       ],
     },
+    "nano-banana-2": {
+      parameters: [
+        { name: "aspect_ratio", type: "string", description: "Output aspect ratio", enum: ["1:1", "1:4", "1:8", "2:3", "3:2", "3:4", "4:1", "4:3", "4:5", "5:4", "8:1", "9:16", "16:9", "21:9", "auto"], default: "auto" },
+        { name: "resolution", type: "string", description: "Output resolution", enum: ["1K", "2K", "4K"], default: "1K" },
+        { name: "output_format", type: "string", description: "Output format", enum: ["png", "jpg"], default: "jpg" },
+      ],
+      inputs: [
+        { name: "prompt", type: "text", required: true, label: "Prompt" },
+        { name: "image_input", type: "image", required: false, label: "Image", isArray: true },
+      ],
+    },
     "nano-banana-pro": {
       parameters: [
         { name: "aspect_ratio", type: "string", description: "Output aspect ratio", enum: ["1:1", "2:3", "3:2", "4:3", "16:9", "9:16", "21:9", "auto"], default: "1:1" },
