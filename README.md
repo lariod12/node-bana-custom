@@ -156,6 +156,59 @@ npm run test:run      # Single run
 npm run test:coverage # With coverage report
 ```
 
+## Syncing with Upstream (Fork Maintenance)
+
+This repository (`lariod12/node-bana-custom`) is a custom fork of the upstream reference repo [`shrimbly/node-banana`](https://github.com/shrimbly/node-banana).
+
+Upstream development happens on the `develop` branch (the `master` branch on upstream is only a mirror of `develop` after each release — you only need to track `develop`).
+
+### One-time setup
+
+The helper script auto-adds the `reference` remote on first run. If you prefer to do it manually:
+
+```bash
+git remote add reference https://github.com/shrimbly/node-banana.git
+```
+
+### Sync upstream → origin/develop
+
+Run the helper script whenever you want the latest upstream changes on your `origin/develop`:
+
+```powershell
+# Windows PowerShell (recommended)
+.\scripts\sync-upstream.ps1
+
+# Windows CMD
+scripts\sync-upstream.cmd
+
+# Git Bash / WSL / macOS / Linux
+bash scripts/sync-upstream.sh
+```
+
+The script will:
+1. Fetch latest from `reference` (upstream) and `origin`
+2. Show how many new commits `reference/develop` has ahead of `origin/develop`
+3. Push `reference/develop` → `origin/develop` if there are updates
+
+To only check for updates without pushing:
+
+```powershell
+# PowerShell
+.\scripts\sync-upstream.ps1 -Check
+
+# Bash
+bash scripts/sync-upstream.sh --check
+```
+
+### Manual command (no script)
+
+```bash
+git fetch reference
+git push origin refs/remotes/reference/develop:refs/heads/develop
+```
+
+> **Note:** This pushes upstream commits directly to `origin/develop` as a mirror. Only branch you need to keep in sync is `develop` — all releases and active development land there first.
+
 ## Contributing
 
 PRs are welcome! Fork the repo, branch from `develop`, and open a PR back to `develop`.
